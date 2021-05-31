@@ -12,18 +12,18 @@
 
 
  cat logfile.log | grep -i "192.168.8.1" | while read line ; do
-	API_FILES=$(awk -F "GET " {'print $2'} | cut -d ' ' -f1 | sort | uniq | grep -i 'api')
-	echo -e "\n[+] API FILES\n======================="
-	echo -e "${API_FILES}\n" 
-	echo -e "${API_FILES}\n" > api.txt
+	echo "\n[+] API FILES\n======================="
+	API_FILES=$(awk -F "GET " {'print $2'} | cut -d ' ' -f1 | sort | uniq | grep -i '/api/')
+	echo "${API_FILES}\n" 
+	echo "${API_FILES}\n" > api.txt
 done
 
 
  cat logfile.log | grep -i "192.168.8.1" | while read line ; do
-	HTML_FILES=$(awk -F "GET " {'print $2'} | cut -d ' ' -f1 | sort | uniq | grep -i 'html')
-	echo -e "\n[+]  HTML FILES\n======================="
-	echo -e "${HTML_FILES}\n" 
-	echo -e "${HTML_FILES}\n" > html.txt
+	echo "\n[+]  HTML FILES\n======================="
+	HTML_FILES=$(awk -F "GET " {'print $2'} | cut -d ' ' -f1 | sort | uniq | grep -i '/html/')
+	echo "${HTML_FILES}\n" 
+	echo "${HTML_FILES}\n" > html.txt
 done
 
 
@@ -31,17 +31,17 @@ done
 
 
  cat logfile.log | grep -i "192.168.8.1" | while read line ; do
-	JS_FILES=$(awk -F "GET " {'print $2'} | cut -d ' ' -f1 | sort | uniq | grep -i 'js')
-	echo -e "\n[+]  JS FILES\n======================="
-	echo -e "${JS_FILES}\n" 
-	echo -e "${JS_FILES}\n" > js.txt
+	echo "\n[+]  JS FILES\n======================="
+	JS_FILES=$(awk -F "GET " {'print $2'} | cut -d ' ' -f1 | sort | uniq | grep -i '/js/')
+	echo "${JS_FILES}\n" 
+	echo "${JS_FILES}\n" > js.txt
 done
 
 
 
  cat logfile.log | grep -i "192.168.8.1" | while read line ; do
-	CONFIG_FILES=$(awk -F "GET " {'print $2'} | cut -d ' ' -f1 | sort | uniq | grep -i 'config')
-	echo -e "\n[+]  CONFIG FILES\n======================="
-	echo -e "${CONFIG_FILES}\n" 
-	echo -e "${CONFIG_FILES}\n" > config.txt
+	echo "\n[+]  CONFIG FILES\n======================="
+	CONFIG_FILES=$(awk -F "GET " {'print $2'} | cut -d ' ' -f1 | sort | uniq | grep -i '/config/')
+	echo "${CONFIG_FILES}\n" 
+	echo "${CONFIG_FILES}\n" > config.txt
 done

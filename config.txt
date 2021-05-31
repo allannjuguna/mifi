@@ -1,5 +1,3 @@
-/api/online-update/autoupdate-config
-/api/online-update/configuration
 /config/deviceinformation/config.xml
 /config/global/config.xml
 /config/global/languagelist.xml
