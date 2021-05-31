@@ -1,0 +1,42 @@
+#!/bin/sh
+
+killall -c mbbservice
+
+sudo chown -R root:wheel /Library/StartupItems/MobileBrServ
+sudo chmod -Rf 755 /Library/StartupItems/MobileBrServ
+sudo cp -f "$1/Contents/Resources/ArConfig.dat" "/Library/StartupItems/MobileBrServ/"
+
+sudo cp -f "$1/Contents/Resources/com.huawei.mbbservice.plist" "/Library/LaunchDaemons/"
+sudo chmod -Rf 644 /Library/LaunchDaemons/com.huawei.mbbservice.plist
+sudo chown -R root:wheel /Library/LaunchDaemons/com.huawei.mbbservice.plist
+
+sudo chown -R root:wheel /Library/StartupItems/MobileBrServ
+sudo chmod -Rf 755 /Library/StartupItems/MobileBrServ
+
+OSMINIVER=`(sw_vers -productVersion) | awk -F '.' '{print $2}'`
+if [ $OSMINIVER -eq "10" ] #eg. 10.8.*  compare second number
+then
+    echo "This mac system version is:" `sw_vers -productVersion` 
+    sudo cp -Rf "$1/Contents/Resources/MBBDataCardECMDriver_10_9.kext" "/Library/Extensions"
+
+    sudo chown -R root:wheel /Library/Extensions/MBBDataCardECMDriver_10_9.kext
+    sudo chmod -R 755 /Library/Extensions/MBBDataCardECMDriver_10_9.kext
+
+    PID=`ps -axc | grep kextd | perl -e '($a,$r,$z)=split /  */, <>; print $r;'`
+    kill -HUP $PID
+
+    sudo kextload -t /Library/Extensions/MBBDataCardECMDriver_10_9.kext
+
+    touch /System/Library/Extensions
+    touch /Library/Extensions
+else
+    echo "This mac system version is:" `sw_vers -productVersion`
+fi
+
+if [ ! -d "/usr/local/FlashcardService" ]
+then
+    mkdir "/usr/local/FlashcardService"
+fi
+
+chmod 777 "/usr/local/FlashcardService"
+chown root:wheel "/usr/local/FlashcardService"

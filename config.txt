@@ -1,0 +1,13 @@
+/api/online-update/autoupdate-config
+/api/online-update/configuration
+/config/deviceinformation/config.xml
+/config/global/config.xml
+/config/global/languagelist.xml
+/config/global/net-type.xml
+/config/lan/config.xml
+/config/pcassistant/config.xml
+/config/sms/config.xml
+/config/ussd/postpaidussd.xml
+/config/ussd/prepaidussd.xml
+/config/webuicfg/config.xml
+

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -e "/Library/StartupItems/MobileBrServ/StartupParameters.plist" ]
+then
+    sudo rm -Rf "/Library/StartupItems/MobileBrServ/StartupParameters.plist"
+    #sudo rm -Rf "/Library/StartupItems/MobileBrServ/mbbservice"
+fi
+
+if [ -e "/Library/LaunchDaemons/com.huawei.mbbservice.plist" ]
+then
+    /bin/launchctl unload /Library/LaunchDaemons/com.huawei.mbbservice.plist
+    su root -c "/bin/launchctl load /Library/LaunchDaemons/com.huawei.mbbservice.plist"
+fi

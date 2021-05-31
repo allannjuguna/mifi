@@ -1,0 +1,8 @@
+#!/bin/sh
+
+APP_NAME="MobileWiFi.app"
+
+if ! defaults read $HOME/Library/Preferences/com.apple.dock persistent-apps | grep "$APP_NAME"; then
+sudo -u $USER defaults write $HOME/Library/Preferences/com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/$APP_NAME</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+sudo killall Dock
+fi
