@@ -1,0 +1,15 @@
+/js/appmanagement.js
+/js/changelang.js
+/js/checklogin.js
+/js/format.js
+/js/home.js
+/js/main.js
+/js/quicksetup.js
+/js/redirect.js
+/js/select.js
+/js/sms.js
+/js/statistic.js
+/js/update.js
+/js/ussd.js
+/js/validation.js
+
